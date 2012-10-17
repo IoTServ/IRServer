@@ -1,13 +1,13 @@
 /*
  * Arduino Serial IR Server demonstration sketch "IRServer.ino".
- * Version 1.00 Oct 16 2012 - by William North
+ * Version 1.01 Oct 16 2012 - by William North
  * License: GPL
  * 
  * This Arduino Server Application is setup as an infrared remote control code transmitter and uses the following library:
  * IRremote
  * Version 0.1 July, 2009
  * Copyright 2009 Ken Shirriff
- * For details, see http://arcfn.com/2009/08/multi-protocol-infrared-remote-library.htm
+ * For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
  * IRremote: sends IR codes via the Arduino
  * An IR LED must be connected to Arduino PWM pin 3.
  */

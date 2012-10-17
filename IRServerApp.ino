@@ -6,7 +6,7 @@
  * IRremote
  * Version 0.1 July, 2009
  * Copyright 2009 Ken Shirriff
- * For details, see http://arcfn.com/2009/08/multi-protocol-infrared-remote-library.htm
+ * For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
  * IRremote: sends IR codes via the Arduino
  * An IR LED must be connected to Arduino PWM pin 3.
  */
@@ -15,7 +15,7 @@
 #include <IRremote.h>
 
 #define APP_NAME       "IRServerApp"
-#define APP_VERSION    0.40
+#define APP_VERSION    0.41
 #define APP_DATE       "2012-10-16"
 #define APP_COPYRIGHT  "Copyright (C) 2012 William North"
 
@@ -31,7 +31,7 @@ void displayAppSplash()
   Serial.println("This Arduino Server app is setup as an infrared remote control code transmitter.");
   Serial.println("Works only for the 20-bit SONY SIRC protocol right now.");
   Serial.println("The IRremote library from Ken Shirriff is used in this app.");
-  Serial.println("For details, see http://arcfn.com/2009/08/multi-protocol-infrared-remote-library.htm");
+  Serial.println("For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html");
   Serial.println("Type 'help' for instructions\n");  
 }
 
@@ -63,8 +63,11 @@ int sendsirc(String strCommand)
   //Load the code into the strCode variable.
   //Start from the twelfth charecter (position 11).
   strCode = strCommand.substring(11);
+  
+  //Get the code length.
   intCodeLength = strCode.length();
 
+  //Validate intCodeLength
   if (intCodeLength < 1) {
     intCommandSucceeded = false;
   } 
@@ -72,8 +75,10 @@ int sendsirc(String strCommand)
     intCommandSucceeded = true;
   }
 
+  //Create a char array big enough to hold the code.
   char charSIRCCode[(intCodeLength + 1)];
 
+  //Determine the number of bits to transmit.
   if (strCommand.startsWith("sendsirc12")) {
     intBits = 12;
   }
@@ -88,35 +93,35 @@ int sendsirc(String strCommand)
     intCommandSucceeded = false;
   }
 
-  //Convert the String to a char array.
+  //Convert the HEX code string in the "strCode" variable to a char array and store in "charSIRCCode".
   strCode.toCharArray(charSIRCCode, (intCodeLength + 1));
 
   //Convert the char array containing the HEX code into an unsigned long integer so IRremote can use it.
   ulngCode = strtol(charSIRCCode, &p, 0);
 
-  //Validate stuuf, then run the command:
+  //Validate stuff, then execute:
   if ((ulngCode < 1) || (intBits < 12) || (intBits > 20)) 
   {
     intCommandSucceeded = false;
   }
   else 
   {
-    //Tell us what is being done... 
+    //Validation succeeded, report what is about to occur... 
     Serial.print("Sending ");  
     Serial.print(ulngCode, HEX);  
     Serial.print(" as SONY ");
     Serial.print(intBits);  
     Serial.println("-bit SIRC... ");
 
-    //Execute the SONY SIRC (12-bit, 15-bit or 20-bit) command using the IRremote library...
+    //Transmit the SONY SIRC (12-bit, 15-bit or 20-bit) code using the IRremote library...
     for (int i = 0; i < 3; i++) 
     {
       irsend.sendSony(ulngCode, intBits); 
       delay(40);
     }
 
-    //If we got this far, it must have worked!
-    Serial.println("Sent!");  
+    //If we got this far, it must have worked!  Tell the host...
+    Serial.println("Code sent!");  
     intCommandSucceeded = true;
   }
 
