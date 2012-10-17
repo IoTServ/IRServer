@@ -7,6 +7,7 @@
  * Version 0.1 July, 2009
  * Copyright 2009 Ken Shirriff
  * For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
+ * and https://github.com/shirriff/Arduino-IRremote
  * IRremote: sends IR codes via the Arduino
  * An IR LED must be connected to Arduino PWM pin 3.
  */
@@ -15,7 +16,7 @@
 #include <IRremote.h>
 
 #define APP_NAME       "IRServerApp"
-#define APP_VERSION    0.41
+#define APP_VERSION    0.42
 #define APP_DATE       "2012-10-16"
 #define APP_COPYRIGHT  "Copyright (C) 2012 William North"
 
