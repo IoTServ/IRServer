@@ -19,7 +19,7 @@ IRServer.ino:
 A sample Arduino sketch containing the setup() and loop() methods.  Configure the Serial Monitor to send a 'Newline' when the [Enter] key is pressed or the 'Send' button is clicked, and set the rate to 115200 baud.
 
 IRServerApp.ino:
-The IR-transmitter server application containing the IR command protocol parsers (custom methods called by the command-parser "ArduinoServer.ino").  Works only for the 20-bit SONY SIRC protocol right now.  More protocols and a front-end to be added soon.
+The IR-transmitter server application containing the IR command protocol parsers (custom methods called by the command-parser "ArduinoServer.ino").  I have only tested the 20-bit SONY SIRC protocol, but it should work for the 12-bit and 15-bit versions as well.  More protocols and a front-end to be added soon.
 
 README:
 This file.

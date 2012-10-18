@@ -16,7 +16,7 @@
 #include <IRremote.h>
 
 #define APP_NAME       "IRServerApp"
-#define APP_VERSION    0.42
+#define APP_VERSION    0.43
 #define APP_DATE       "2012-10-16"
 #define APP_COPYRIGHT  "Copyright (C) 2012 William North"
 
@@ -30,7 +30,7 @@ void displayAppSplash()
   Serial.print(" ");
   Serial.println(APP_COPYRIGHT);
   Serial.println("This Arduino Server app is setup as an infrared remote control code transmitter.");
-  Serial.println("Works only for the 20-bit SONY SIRC protocol right now.");
+  Serial.println("Tested with the 20-bit SONY SIRC protocol, but should also work for the 12-bit and 15-bit versions as well.");
   Serial.println("The IRremote library from Ken Shirriff is used in this app.");
   Serial.println("For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html");
   Serial.println("Type 'help' for instructions\n");  
@@ -42,6 +42,7 @@ int displayAppHelpScreen()
   Serial.println("This command sends the HEX code 0xa8b47 using the ");
   Serial.println("SONY SIRC 20-bit protocol, which is the Power-toggle button ");
   Serial.println("for a SONY BDP-S390 Blu-Ray player.");
+  Serial.println("To send 12-bit or 15-bit SIRC, use the sendsirc12 and sendsirc15 commands.");
   intCommandSucceeded = true;
   return intCommandSucceeded;
 }

@@ -1,6 +1,6 @@
 /*
  * Arduino Serial IR Server demonstration sketch "IRServer.ino".
- * Version 1.02 Oct 16 2012 - by William North
+ * Version 1.03 Oct 18 2012 - by William North
  * License: GPL
  * 
  * This Arduino Server Application is setup as an infrared remote control code transmitter and uses the following library:
