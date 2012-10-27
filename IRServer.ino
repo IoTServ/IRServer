@@ -1,5 +1,5 @@
 /*
- IRServer.ino version 1.10 - Arduino Serial IR Server demonstration sketch.
+ IRServer.ino version 1.11 - Arduino Serial IR Server demonstration sketch.
  For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
  IRremote library (http://www.arcfn.com).
  
@@ -32,17 +32,11 @@
 //Include the ArduinoServer.h module, it contains the getCommand() and runCommand() methods.
 #include "ArduinoServer.h"
 
-//Include the IRServerApp.h module, it contains the methods used to send IR codes for vaious protocols.
-//#include "IRServerApp.h"
-
-//IRsend irsend;
-
 String strCommand;
 int intCommandSucceeded;
 
 void setup()
 {  
-
   //Serial.begin(9600);  
   Serial.begin(115200);
 
