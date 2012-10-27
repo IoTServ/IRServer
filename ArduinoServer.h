@@ -1,33 +1,53 @@
 /*
- * Arduino Custom Command Server (via the virtual serial port) "ArduinoServer.ino".
- * License: GPL
- * 
- * This is the Arduino Server sketch "ArduinoServer.ino".
+ ArduinoServer.h version 0.30 - Arduino Custom Command Server (via the virtual serial port).
+ For use with the Arduino (http://www.arduino.cc/)
+ 
+ Created by William North, October 14, 2012.
+ License: GPL
+ 
+ ArduinoServer.h is a part of the ArduinoServer project at:
+ https://github.com/WilliamNorth/ArduinoServer
+ 
+ IRServerApp.h is a part of the IRServer project at:
+ https://github.com/WilliamNorth/IRServer
+ 
+ IRremote.h is a part of the Arduino-IRremote project at:
+ https://github.com/shirriff/Arduino-IRremote
+ 
+ * This is the ArduinoServer module "ArduinoServer.h".
  * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is pressed 
  * or the 'Send' button is clicked, and set the rate to 115200 baud.
  * 
- * This server is setup to run the IRServer application "IRServerApp.ino".
+ * This server is setup to run the IRServer application "IRServerApp.h".
  */
 
+#ifndef ArduinoServer_h
+#define ArduinoServer_h
+#include "Arduino.h"
+
+//Include the IRServerApp module
+#include "IRServerApp.h"
+
 #define SERVER_NAME       "Arduino Custom Command Server"
-#define SERVER_VERSION    0.28
-#define SERVER_DATE       "2012-10-16"
-#define SERVER_COPYRIGHT  "Copyright (C) 2012 William North"
+#define SERVER_VERSION    0.30
+#define SERVER_DATE       "2012-10-27"
+#define SERVER_COPYRIGHT  "Copyright (C) 2012 My Mother"
 
 void displayServerSplash()
 {
-  Serial.print(SERVER_NAME);
-  Serial.print(" version ");
+  Serial.println(SERVER_NAME);
+  Serial.print("Version ");
   Serial.print(SERVER_VERSION);
   Serial.print(" of ");
-  Serial.print(SERVER_DATE);
-  Serial.print(" ");
+  Serial.println(SERVER_DATE);
   Serial.println(SERVER_COPYRIGHT); 
   Serial.print("\n");
 }
 
 int displayServerHelpScreen() 
 {
+  int intCommandSucceeded;
+
   Serial.println("Type a command (case insensitive), then press [Enter].");
   intCommandSucceeded = true;
   return intCommandSucceeded;
@@ -35,6 +55,8 @@ int displayServerHelpScreen()
 
 int displayAllHelpScreens() 
 {
+  int intCommandSucceeded;
+
   displayServerHelpScreen(); 
   displayAppHelpScreen(); 
   intCommandSucceeded = true;
@@ -69,7 +91,7 @@ String getCommand()
 
 int runCommand(String strCommand)
 {
-  intCommandSucceeded = 0;
+  int intCommandSucceeded;
 
   Serial.print("Executing command: ");
   Serial.println(strCommand);
@@ -78,34 +100,34 @@ int runCommand(String strCommand)
     intCommandSucceeded = displayAllHelpScreens();
   }
   else if (strCommand.startsWith("sendnec")) {
-    intCommandSucceeded = sendnec(strCommand);
+    intCommandSucceeded = sendIRnec(strCommand);
   }
   else if (strCommand.startsWith("sendsirc")) {
-    intCommandSucceeded = sendsirc(strCommand);
+    intCommandSucceeded = sendIRsirc(strCommand);
   }
   else if (strCommand.startsWith("sendrc5")) {
-    intCommandSucceeded = sendrc5(strCommand);
+    intCommandSucceeded = sendIRrc5(strCommand);
   }
   else if (strCommand.startsWith("sendrc6")) {
-    intCommandSucceeded = sendrc6(strCommand);
+    intCommandSucceeded = sendIRrc6(strCommand);
   }
   else if (strCommand.startsWith("senddish")) {
-    intCommandSucceeded = senddish(strCommand);
+    intCommandSucceeded = sendIRdish(strCommand);
   }
   else if (strCommand.startsWith("sendsharp")) {
-    intCommandSucceeded = sendsharp(strCommand);
+    intCommandSucceeded = sendIRsharp(strCommand);
   }
   else if (strCommand.startsWith("sendpanasonic")) {
-    intCommandSucceeded = sendpanasonic(strCommand);
+    intCommandSucceeded = sendIRpanasonic(strCommand);
   }
   else if (strCommand.startsWith("sendjvc")) {
-    intCommandSucceeded = sendjvc(strCommand);
+    intCommandSucceeded = sendIRjvc(strCommand);
   }
   else if (strCommand.startsWith("sendsanyo")) {
-    intCommandSucceeded = sendsanyo(strCommand);
+    intCommandSucceeded = sendIRsanyo(strCommand);
   }
   else if (strCommand.startsWith("sendmitsubishi")) {
-    intCommandSucceeded = sendmitsubishi(strCommand);
+    intCommandSucceeded = sendIRmitsubishi(strCommand);
   }
   else {
     intCommandSucceeded = false;
@@ -114,4 +136,9 @@ int runCommand(String strCommand)
   //Return the success or failure of this command.
   return intCommandSucceeded;
 }
+
+#endif
+
+
+
 

@@ -1,24 +1,38 @@
 /*
- * Arduino Serial IR Server Application "IRServerApp.ino".
- * License: GPL
- * 
- * This Arduino Server Application is setup as an infrared remote control code transmitter and uses the following library:
- * IRremote
- * Version 0.1 July, 2009
- * Copyright 2009 Ken Shirriff
- * For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
- * and https://github.com/shirriff/Arduino-IRremote
- * IRremote: sends IR codes via the Arduino
+ IRServerApp.h version 0.50 - Arduino Serial IR Server Application.
+ For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
+ IRremote library (http://www.arcfn.com).
+ 
+ Created by William North, October 16, 2012.
+ License: GPL
+ 
+ ArduinoServer.h is a part of the ArduinoServer project at:
+ https://github.com/WilliamNorth/ArduinoServer
+ 
+ IRServerApp.h is a part of the IRServer project at:
+ https://github.com/WilliamNorth/IRServer
+ 
+ IRremote.h is a part of the Arduino-IRremote project at:
+ https://github.com/shirriff/Arduino-IRremote
+ 
+ * This is the IRServerApp module "IRServerApp.h".
+ * IRremote/IRsend(): sends IR codes via the Arduino
  * An IR LED must be connected to Arduino PWM pin 3.
  */
 
+#ifndef IRServerApp_h
+#define IRServerApp_h
+#include "Arduino.h"
+
 //Include Ken Shirriff's IRremote library.
-#include <IRremote.h>
+#include "IRremote.h"
+
+IRsend irsend;
 
 #define APP_NAME       "IRServerApp"
-#define APP_VERSION    0.43
-#define APP_DATE       "2012-10-16"
-#define APP_COPYRIGHT  "Copyright (C) 2012 William North"
+#define APP_VERSION    0.50
+#define APP_DATE       "2012-10-27"
+#define APP_COPYRIGHT  "Copyright (C) 2012 Your Mother"
 
 void displayAppSplash()
 {
@@ -38,6 +52,8 @@ void displayAppSplash()
 
 int displayAppHelpScreen() 
 {
+  int intCommandSucceeded;
+
   Serial.println("Example: sendsirc20 0xa8b47");
   Serial.println("This command sends the HEX code 0xa8b47 using the ");
   Serial.println("SONY SIRC 20-bit protocol, which is the Power-toggle button ");
@@ -47,25 +63,25 @@ int displayAppHelpScreen()
   return intCommandSucceeded;
 }
 
-int sendnec(String strCommand) {
+int sendIRnec(String strCommand) {
 }
 
-int sendsirc(String strCommand) 
+int sendIRsirc(String strCommand) 
 {
-  IRsend irsend;
 
   String strCode = "";
   int intCodeLength = 0;
   char *p, *charCode;
   unsigned long ulngCode = 0;
   int intBits = 0;  
+  int intCommandSucceeded;
 
   intCommandSucceeded = 0;
 
   //Load the code into the strCode variable.
   //Start from the twelfth charecter (position 11).
   strCode = strCommand.substring(11);
-  
+
   //Get the code length.
   intCodeLength = strCode.length();
 
@@ -130,20 +146,23 @@ int sendsirc(String strCommand)
   return intCommandSucceeded;
 }
 
-int sendrc5(String strCommand) {
+int sendIRrc5(String strCommand) {
 }
-int sendrc6(String strCommand) {
+int sendIRrc6(String strCommand) {
 }
-int senddish(String strCommand) {
+int sendIRdish(String strCommand) {
 }
-int sendsharp(String strCommand) {
+int sendIRsharp(String strCommand) {
 }
-int sendpanasonic(String strCommand) {
+int sendIRpanasonic(String strCommand) {
 }
-int sendjvc(String strCommand) {
+int sendIRjvc(String strCommand) {
 }
-int sendsanyo(String strCommand) {
+int sendIRsanyo(String strCommand) {
 }
-int sendmitsubishi(String strCommand) {
+int sendIRmitsubishi(String strCommand) {
 }
+
+
+#endif
 

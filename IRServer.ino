@@ -1,29 +1,48 @@
 /*
- * Arduino Serial IR Server demonstration sketch "IRServer.ino".
- * Version 1.03 Oct 18 2012 - by William North
- * License: GPL
+ IRServer.ino version 1.10 - Arduino Serial IR Server demonstration sketch.
+ For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
+ IRremote library (http://www.arcfn.com).
+ 
+ Created by William North, October 16, 2012.
+ License: GPL
+ 
+ ArduinoServer.h is a part of the ArduinoServer project at:
+ https://github.com/WilliamNorth/ArduinoServer
+ 
+ IRServerApp.h is a part of the IRServer project at:
+ https://github.com/WilliamNorth/IRServer
+ 
+ IRremote.h is a part of the Arduino-IRremote project at:
+ https://github.com/shirriff/Arduino-IRremote
+ 
+ * This is the Arduino Serial IR Server demonstration sketch "IRServer.ino".
+ * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is pressed 
+ * or the 'Send' button is clicked, and set the rate to 115200 baud.
  * 
- * This Arduino Server Application is setup as an infrared remote control code transmitter and uses the following library:
- * IRremote
- * Version 0.1 July, 2009
- * Copyright 2009 Ken Shirriff
- * For details, see http://www.arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
- * and https://github.com/shirriff/Arduino-IRremote
- * IRremote: sends IR codes via the Arduino
+ * This Arduino Server Application is setup as an infrared remote control code transmitter.
  * An IR LED must be connected to Arduino PWM pin 3.
  */
 
-//Include the ArduinoServer.ino sketch, it contains the getCommand() and runCommand() methods.
-#include <ArduinoServer.ino>
+#ifndef IRServer_ino
+#define IRServer_ino
 
-//Include the IRServerApp.ino sketch, it contains the methods used to send IR codes for vaious protocols.
-#include <IRServerApp.ino>
+//Include Ken Shirriff's IRremote library.
+#include "IRremote.h"
+
+//Include the ArduinoServer.h module, it contains the getCommand() and runCommand() methods.
+#include "ArduinoServer.h"
+
+//Include the IRServerApp.h module, it contains the methods used to send IR codes for vaious protocols.
+//#include "IRServerApp.h"
+
+//IRsend irsend;
 
 String strCommand;
 int intCommandSucceeded;
 
 void setup()
 {  
+
   //Serial.begin(9600);  
   Serial.begin(115200);
 
@@ -58,4 +77,5 @@ void loop ()
   }
 }
 
+#endif
 
