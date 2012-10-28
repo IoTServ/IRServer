@@ -1,27 +1,28 @@
-/*
- IRServer.ino version 1.11 - Arduino Serial IR Server demonstration sketch.
- For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
- IRremote library (http://www.arcfn.com).
- 
- Created by William North, October 16, 2012.
- License: GPL
- 
- ArduinoServer.h is a part of the ArduinoServer project at:
- https://github.com/WilliamNorth/ArduinoServer
- 
- IRServerApp.h is a part of the IRServer project at:
- https://github.com/WilliamNorth/IRServer
- 
- IRremote.h is a part of the Arduino-IRremote project at:
- https://github.com/shirriff/Arduino-IRremote
- 
- * This is the Arduino Serial IR Server demonstration sketch "IRServer.ino".
- * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is pressed 
- * or the 'Send' button is clicked, and set the rate to 115200 baud.
+ /****************************************************************************
+ * IRServer.ino 
+ * Version 1.11 - Arduino Serial IR Server demonstration sketch.
+ * For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
+ * IRremote library (http://www.arcfn.com/).
  * 
- * This Arduino Server Application is setup as an infrared remote control code transmitter.
- * An IR LED must be connected to Arduino PWM pin 3.
- */
+ * Created by William North, October 16, 2012.
+ * License: GPL
+ *****************************************************************************
+ * ArduinoServer.h is a part of the ArduinoServer project at:
+ * https://github.com/WilliamNorth/ArduinoServer
+ * 
+ * IRServerApp.h is a part of the IRServer project at:
+ * https://github.com/WilliamNorth/IRServer
+ * 
+ * IRremote.h is a part of the Arduino-IRremote project at:
+ * https://github.com/shirriff/Arduino-IRremote
+ * 
+ * This is the Arduino Serial IR Server demonstration sketch "IRServer.ino".
+ * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is 
+ * pressed or the 'Send' button is clicked, and set the rate to 115200 baud.
+ * 
+ * This Arduino Server Application is setup as an infrared remote control 
+ * code transmitter.  An IR LED must be connected to Arduino PWM pin 3.
+ ****************************************************************************/
 
 #ifndef IRServer_ino
 #define IRServer_ino
@@ -71,5 +72,5 @@ void loop ()
   }
 }
 
-#endif
+#endif  /* IRServer_ino */
 

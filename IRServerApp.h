@@ -1,24 +1,25 @@
-/*
- IRServerApp.h version 0.50 - Arduino Serial IR Server Application.
- For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's 
- IRremote library (http://www.arcfn.com).
- 
- Created by William North, October 16, 2012.
- License: GPL
- 
- ArduinoServer.h is a part of the ArduinoServer project at:
- https://github.com/WilliamNorth/ArduinoServer
- 
- IRServerApp.h is a part of the IRServer project at:
- https://github.com/WilliamNorth/IRServer
- 
- IRremote.h is a part of the Arduino-IRremote project at:
- https://github.com/shirriff/Arduino-IRremote
- 
+/****************************************************************************
+ * IRServerApp.h
+ * Version 0.51 - Arduino Serial IR Server Application.
+ * For use with the Arduino (http://www.arduino.cc/), and Ken Shirriff's
+ * IRremote library (http://www.arcfn.com/).
+ *
+ * Created by William North, October 16, 2012.
+ * License: GPL
+ *****************************************************************************
+ * ArduinoServer.h is a part of the ArduinoServer project at:
+ * https://github.com/WilliamNorth/ArduinoServer
+ *
+ * IRServerApp.h is a part of the IRServer project at:
+ * https://github.com/WilliamNorth/IRServer
+ *
+ * IRremote.h is a part of the Arduino-IRremote project at:
+ * https://github.com/shirriff/Arduino-IRremote
+ *
  * This is the IRServerApp module "IRServerApp.h".
  * IRremote/IRsend(): sends IR codes via the Arduino
  * An IR LED must be connected to Arduino PWM pin 3.
- */
+ ****************************************************************************/
 
 #ifndef IRServerApp_h
 #define IRServerApp_h
@@ -164,5 +165,6 @@ int sendIRmitsubishi(String strCommand) {
 }
 
 
-#endif
+#endif  /* IRServerApph_h */
+
 

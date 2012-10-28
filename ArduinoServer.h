@@ -1,25 +1,25 @@
-/*
- ArduinoServer.h version 0.30 - Arduino Custom Command Server (via the virtual serial port).
- For use with the Arduino (http://www.arduino.cc/)
- 
- Created by William North, October 14, 2012.
- License: GPL
- 
- ArduinoServer.h is a part of the ArduinoServer project at:
- https://github.com/WilliamNorth/ArduinoServer
- 
- IRServerApp.h is a part of the IRServer project at:
- https://github.com/WilliamNorth/IRServer
- 
- IRremote.h is a part of the Arduino-IRremote project at:
- https://github.com/shirriff/Arduino-IRremote
- 
+ /****************************************************************************
+ * ArduinoServer.h
+ * Version 0.31 - Arduino Custom Command Server (via the virtual serial port).
+ * For use with the Arduino (http://www.arduino.cc/)
+ *
+ * Created by William North, October 14, 2012.
+ * License: GPL
+ *****************************************************************************
+ * ArduinoServer.h is a part of the ArduinoServer project at:
+ * https://github.com/WilliamNorth/ArduinoServer
+ *
  * This is the ArduinoServer module "ArduinoServer.h".
- * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is pressed 
- * or the 'Send' button is clicked, and set the rate to 115200 baud.
- * 
- * This server is setup to run the IRServer application "IRServerApp.h".
- */
+ * Configure the Serial Monitor to send a 'Newline' when the [Enter] key is
+ * pressed or the 'Send' button is clicked, and set the rate to 115200 baud.
+ *
+ * This server is setup to run the ArduinoServer application "IRServerApp.h"
+ * which is part of the IRServer project located at:
+ * https://github.com/WilliamNorth/IRServer which is in turn based on the
+ * Arduino-IRremote library located at:
+ * https://github.com/shirriff/Arduino-IRremote
+ *
+ ****************************************************************************/
 
 #ifndef ArduinoServer_h
 #define ArduinoServer_h
@@ -137,7 +137,7 @@ int runCommand(String strCommand)
   return intCommandSucceeded;
 }
 
-#endif
+#endif  /* ArduinoServer_h */
 
 
 
